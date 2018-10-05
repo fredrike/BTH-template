@@ -998,7 +998,7 @@
 \parskip 0pt
 \calccentering{\unitlength}
 \begin{adjustwidth*}{\unitlength}{-\unitlength}
-\Gill{\begin{center}
+\GillSans{\begin{center}
   {\large \universityname \\
   Doctoral Dissertation Series No \@reportno\\
  \@ifundefined{@ISSN}{}{ISSN \@ISSN\\}
