@@ -1,0 +1,139 @@
+% !TEX TS-program = pdflatex, encoding = UTF-8 Unicode
+% vim: set fenc=utf-8 ff=unix ft=tex
+\documentclass[11pt,doctorate,b5paper]{bth-thesis}
+% Change doctorate to appropriate type.
+% All options are; doctorate, licentiate, masters, bachelors, techreport, projectreport, nocover, draft, b5paper,
+% and everything the memoir class support.
+
+\RequirePackage[l2tabu,orthodox]{nag} % This package helps prevent you from doing things wrong.
+
+%\usepackage{microtype} % Magically improves typesetting for pdflatex
+\usepackage{subfiles} % Convenient use of subfiles in documents. Using \subfile is optional. See README
+\usepackage[swedish,english]{babel}
+
+% More or less required packages
+\usepackage{csquotes} % Needed for biblatex
+% Biblatex allows you to choose backend, either the ancient "bibtex", or the modern "biber". biber is better.
+\usepackage[style=numeric-comp,giveninits=true,uniquename=init,maxcitenames=1,maxbibnames=99, sorting=none, backend=biber, natbib=true]{biblatex}  % Modern bibliography facilities (you may change style to numeric). Change to old bibtex if you insist on using that.
+%\DeclareLanguageMapping{english}{english-apa}
+
+%\usepackage{mathtools} % All your math related needs
+%\usepackage{tikz} % Draw figures.
+\usepackage[caption=false]{subfig} % Subfloats
+\usepackage{xcolor,colortbl}
+% Read the manuals for the respective package to see the usage;
+\usepackage{amsmath}
+%\usepackage{pdfpages} % For included other pdf files (like articles).
+%\usepackage{thmtools} % For theorems.
+%\usepackage{algorithms} % For algorithms.
+%\usepackage{listings} % For source code.
+\usepackage{booktabs} % High quality tables.
+%\usepackage{siunitx} % For all your numerical values and units.
+%\usepackage{contmech} % Custom package for typesetting in continuum mechanics for applied mechanics.
+%\usepackage{yourcustomcommands} % Put your custom commands in a file 'yourcustomcommands.sty' and load it like this.
+\usepackage{enumitem}
+\usepackage{rotating}
+\usepackage{soulutf8}
+
+\usepackage{pbox,ragged2e} %Elastic parboxes.. (\pbox)
+\usepackage{graphicx}
+\graphicspath{{Images/}{../Images/}}
+%\DeclareGraphicsExtensions{.pdf,.eps,.png}
+\usepackage{multirow}
+\usepackage{lipsum}\setlipsumdefault{1-2} % Package used to put in placeholder text. Remove it.
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{hyperref} % Required for in document links and document metadata.
+\usepackage{amssymb}
+
+\usepackage[colorinlistoftodos,prependcaption,textsize=small]{todonotes}
+\setstcolor{red}
+\setulcolor{green}
+\usepackage{xargs}
+
+
+%% Comment out to build just the "kappa"
+\fullthesistrue
+
+\addbibresource{bibliography.bib}
+
+% Definitions
+\title{Example thesis}
+\subtitle{subtitle}
+\author{Donald Duck} % Not common with more than one author
+\thesisin{Computer Science}
+\faculty{Faculty of Computing}
+\department{Department of Computer Science and Engineering}
+\institution{Institutionen för datalogi och datorsystemteknik, DIDD}
+\reportno{\the\year:XX}
+\ISBN{123-21332-13423-123} % Only for doctorate
+\copyrightyear{\the\year}
+\keywords{}
+%Cover page is only used for Licentiate and Doctorate (the pdf is provided by the library)
+%\coverpage{Flyleaves_lic}
+
+%: Discussion meetings  (both physical, over Skype and e-mail etc.) , joint authorship of articles, feedback on research results and written material
+%\opponent{
+%Dr.~Alban\\
+%Department of Pop\\
+%University of Somewhere\\
+%Nigeria
+%}
+%\oppositiondate{10.00 am, 30\textsuperscript{th} May, 2011 in HA2 Hörsalsvägen 4, Karlskrona}
+
+%Define myquote if you like to add a page with a thinkful quote.
+%Requires two arguments, quote and author.
+\myquote{''I came, I saw, I conquered.``}{Julius Caesar, 47 BC.}
+
+\firstabstract{\lipsum}
+%\secondabstract{}{\lipsum} % Optional
+
+\preface{\lipsum} % You can use \input to put preface and acknowledgements in another document
+\acknowledgements{\lipsum}
+\dedication{\textit{to my dear mother.}}
+
+\begin{document}
+
+
+% \makethesisdefence % Should be printed at a5paper size
+\begin{refsection}
+
+\iffullthesis
+  \maketitle
+\else
+  %%  If you need to do any modifications, you can redefine each page respectively, or just call them manually as;
+  % \makecoverpage
+  \maketitlepage
+  % \makeprintinfopage
+  \makeabstractpage
+  % \makesecondabstractpage %% Needs second language
+  % \makededicationpage
+  % \makeprefacepage
+  \makeacknowledgementspage
+  \tableofcontents
+  %% Insert a new page (at the right) and reset style and numbering
+  \cleardoublepage
+  \pagestyle{Ruled}
+  \pagenumbering{arabic}
+\fi
+
+\fixchapterstyle
+\parskip 0.7em
+
+\chapter{Introduction}
+\nocite{Erlandsson1157269}
+\lipsum
+
+\printbibliography[heading=subbibliography]
+\end{refsection}
+
+\iffullthesis
+
+\fixchapterstyle
+%% Include papers from the folder papers.
+%\subfile{papers/paper1.tex}
+
+\fi
+
+\end{document}
